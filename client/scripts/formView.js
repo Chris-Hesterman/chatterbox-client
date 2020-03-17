@@ -7,9 +7,17 @@ var FormView = {
   },
 
   handleSubmit: function(event) {
-    // Stop the browser from submitting the form
     event.preventDefault();
-    
+    var messageText = $('#message').val();
+    var message = {
+      username: _.escape(App.username),
+      text: _.escape(messageText),
+      roomname: ''
+    };
+    var successPost = function(message) {
+      console.log(message.text + ' was successfully posted by ' + message.username);
+    }
+    Parse.create(message, successPost.bind(this, message))
     console.log('click!');
   },
 
