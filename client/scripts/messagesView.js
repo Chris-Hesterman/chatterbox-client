@@ -3,13 +3,20 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function () {
-    console.log(window);
-    window.App.fetch().done(function(data) {
-      console.log(data);
+    Parse.readAll((name) => {
+      Object.assign(Messages, name);
+      console.log('Messages', Messages);
+      MessagesView.render();
     });
   },
 
-  render: function() {
+  render: function () {
+    let html = '';
+
+    for (let message of Messages.results) {
+      html += MessageView.render(message);
+    }
+    $('#chats').append(html);
   }
 
 };
