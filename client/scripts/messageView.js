@@ -2,8 +2,8 @@ var MessageView = {
 
   render: _.template(`
       <div class="chat">
-        <div class="username"><%= App.username %></div>
-        <div></div>
+        <div class="username"><%= _.escape(decodeURI(arguments[0].username)) %></div>
+        <div class="post"><%= _.escape(decodeURI(arguments[0].text)) %></div>
       </div>
     `)
 };

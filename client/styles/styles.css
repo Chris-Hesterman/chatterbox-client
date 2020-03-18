@@ -60,6 +60,7 @@ form input[type=text] {
 }
 
 .chat {
+    height: 5rem;
     padding: 5px;
     margin-bottom: 5px;
     background-color: #eee;
