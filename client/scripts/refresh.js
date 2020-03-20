@@ -1,7 +1,0 @@
-var Refresh = {
-  $refreshbutton: $('.refresh'),
-
-
-
-
-};

@@ -29,7 +29,6 @@ var App = {
   refresh: function() {
     App.startSpinner();
     App.fetch(MessagesView.initialize());
-    // MessagesView.initialize()
 
   },
 
