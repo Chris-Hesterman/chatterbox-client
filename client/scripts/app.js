@@ -17,13 +17,20 @@ var App = {
 
   },
 
-  fetch: function(callback = ()=>{}) {
+  fetch: function (callback = () => { }) {
+    Messages = {};
+    $('#chats').empty();
     Parse.readAll((data) => {
-      // examine the response from the server request:
-      // console.log(data);
-
+      Object.assign(Messages, data);
       callback();
     });
+  },
+
+  refresh: function() {
+    App.startSpinner();
+    App.fetch(MessagesView.initialize());
+    // MessagesView.initialize()
+
   },
 
   startSpinner: function() {
