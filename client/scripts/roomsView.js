@@ -1,14 +1,14 @@
 var RoomsView = {
   $refreshbutton: $('.refresh'),
-  $select: $('#rooms select'),
+  $select: $('select'),
 
   initialize: function() {
     this.$refreshbutton.on('click', function () {
       App.refresh();
     });
     this.$select.change((event) => {
-      console.log(event);
-      MessagesView.renderMessage();
+      App.roomname = event.target.value;
+      App.refresh();
     });
   },
 
@@ -18,11 +18,7 @@ var RoomsView = {
     html += RoomView.render({ room: newRoom });
     console.log(html);
     this.$select.append(html);
-    this.chooseRoom();
-  },
-
-  chooseRoom: function() {
-
+    App.refresh();
   },
 
   render: function () {
