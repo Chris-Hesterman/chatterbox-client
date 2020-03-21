@@ -3,6 +3,7 @@ var App = {
   $spinner: $('.spinner img'),
 
   username: 'anonymous',
+  roomname: 'default room',
 
   initialize: function() {
     App.username = window.location.search.substr(10);
@@ -10,6 +11,7 @@ var App = {
     FormView.initialize();
     RoomsView.initialize();
     MessagesView.initialize();
+    Rooms.initialize();
 
     // Fetch initial batch of messages
     App.startSpinner();

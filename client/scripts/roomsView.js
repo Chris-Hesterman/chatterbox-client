@@ -1,26 +1,34 @@
 var RoomsView = {
   $refreshbutton: $('.refresh'),
-  $button: $('#rooms button'),
   $select: $('#rooms select'),
 
   initialize: function() {
     this.$refreshbutton.on('click', function () {
       App.refresh();
     });
-    this.$button.on('click', function () {
-      RoomsView.createRooms();
+    this.$select.change((event) => {
+      console.log(event);
+      MessagesView.renderMessage();
     });
   },
 
-  render: function() {
+  updateSelector: function() {
+    var html = '';
+    let newRoom = App.roomname;
+    html += RoomView.render({ room: newRoom });
+    console.log(html);
+    this.$select.append(html);
+    this.chooseRoom();
   },
 
-  createRooms: function () {
-    var html = '';
-    var newRoom = window.prompt('Enter a room name');
-    html += RoomsView.render({ room: newRoom});
-    this.$select.append(html);
-    console.log($select);
-  }
+  chooseRoom: function() {
+
+  },
+
+  render: function () {
+    MessagesView.renderMessage();
+  },
 
 };
+
+
