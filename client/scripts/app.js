@@ -3,6 +3,7 @@ var App = {
   $spinner: $('.spinner img'),
 
   username: 'anonymous',
+  roomname: 'default room',
 
   initialize: function() {
     App.username = window.location.search.substr(10);
@@ -10,6 +11,7 @@ var App = {
     FormView.initialize();
     RoomsView.initialize();
     MessagesView.initialize();
+    Rooms.initialize();
 
     // Fetch initial batch of messages
     App.startSpinner();
@@ -17,13 +19,19 @@ var App = {
 
   },
 
-  fetch: function(callback = ()=>{}) {
+  fetch: function (callback = () => { }) {
+    Messages = {};
+    $('#chats').empty();
     Parse.readAll((data) => {
-      // examine the response from the server request:
-      // console.log(data);
-
+      Object.assign(Messages, data);
       callback();
     });
+  },
+
+  refresh: function() {
+    App.startSpinner();
+    App.fetch(MessagesView.initialize());
+
   },
 
   startSpinner: function() {
