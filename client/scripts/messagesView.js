@@ -4,8 +4,8 @@ var MessagesView = {
 
   initialize: function () {
     setTimeout(function() {
-      MessagesView.renderMessage();
-    }, 1000);
+      MessagesView.renderMessage(Messages.results);
+    }, 2000);
     // MessagesView.render();
 
   },
@@ -16,16 +16,18 @@ var MessagesView = {
         return message;
       }
     });
+
     return roomMessages;
   },
 
-  renderMessage: function () {
+  renderMessage: function (messages) {
     let html = '';
-    let newMessagesArray = Messages.results;
+
     if (App.roomname !== 'default room') {
-      newMessagesArray = this.filterMessages();
+      messages = this.filterMessages();
     }
-    for (let post of newMessagesArray) {
+
+    for (let post of messages) {
       // console.log(Messages);
       html += MessageView.render({ message: post });
       // console.log(html);

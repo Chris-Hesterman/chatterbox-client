@@ -66,18 +66,19 @@ describe('chatterbox', function() {
 
   describe('chatroom behavior', function() {
     it('should be able to add messages to the DOM', function() {
-      var message = {
+      var message = [{
         username: 'Mel Brooks',
         text: 'Never underestimate the power of the Schwartz!',
         roomname: 'lobby'
-      };
+      }];
+
       MessagesView.renderMessage(message);
       expect($('#chats').children().length).to.equal(1);
     });
 
-    it('should be able to add rooms to the DOM', function() {
+    it('should be able to add rooms to the DOM', function () {
       RoomsView.renderRoom('superLobby');
-      expect($('#rooms select').children().length).to.equal(1);
+      expect($('#rooms select').children().length).to.equal(2);
     });
 
   });
@@ -87,11 +88,11 @@ describe('chatterbox', function() {
       sinon.spy(Friends, 'toggleStatus');
 
       App.initialize();
-      MessagesView.renderMessage({
+      MessagesView.renderMessage([{
         username: 'Mel Brooks',
         text: 'I didn\'t get a harumph outa that guy.!',
         roomname: 'lobby'
-      });
+      }]);
       $('#chats').find('.username').trigger('click');
       expect(Friends.toggleStatus.called).to.be.true;
 

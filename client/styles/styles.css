@@ -5,6 +5,10 @@ body {
     font-family: arial, sans-serif;
 }
 
+/* .friendHighlight {
+    background: lightblue;
+} */
+
 #main, #chats {
     width: 500px;
     margin: auto;
