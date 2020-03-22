@@ -11,7 +11,7 @@ var FormView = {
     var message = {
       username: _.escape(App.username),
       text: _.escape(messageText),
-      roomname: ''
+      roomname: _.escape(App.roomname)
     };
     var successPost = function(message) {
       console.log(

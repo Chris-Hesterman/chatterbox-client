@@ -1,17 +1,15 @@
 var Rooms = {
 
-  $button: $('#rooms button'),
+  $button: $('.addroom'),
 
   initialize: function() {
-    this.$button.on('click', function () {
-      Rooms.add();
-    });
+    this.$button.on('click', Rooms.add);
   },
 
   add: function () {
     var html = '';
     var newRoom = window.prompt('Enter a room name');
     App.roomname = newRoom;
-    RoomsView.updateSelector();
+    RoomsView.renderRoom(newRoom);
   }
 };

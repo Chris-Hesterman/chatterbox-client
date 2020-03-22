@@ -3,31 +3,25 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
-    this.$refreshbutton.on('click', function () {
+    this.$refreshbutton.on('click', App.refresh);
+    this.$select.change((event) => {
+      App.roomname = event.target.value;
       App.refresh();
     });
-    this.$select.change((event) => {
-      console.log(event);
-      MessagesView.renderMessage();
-    });
   },
 
-  updateSelector: function() {
+  renderRoom: function(room) {
     var html = '';
-    let newRoom = App.roomname;
-    html += RoomView.render({ room: newRoom });
+    // let newRoom = App.roomname;
+    html += RoomView.render({ room: room });
     console.log(html);
     this.$select.append(html);
-    this.chooseRoom();
+    App.refresh();
   },
 
-  chooseRoom: function() {
-
-  },
-
-  render: function () {
-    MessagesView.renderMessage();
-  },
+  // render: function () {
+  //   MessagesView.renderMessage(Messages.results);
+  // },
 
 };
 
