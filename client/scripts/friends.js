@@ -3,15 +3,14 @@ var Friends = {
 
   friendsList: {},
 
-  initialize: function () {
+  initialize: function() {
     this.$chats.on('click', (event) => {
       var username = _.escape(event.target.innerHTML);
       this.toggleStatus(username);
-
     });
   },
 
-  toggleStatus: function (username) {
+  toggleStatus: function(username) {
     if (this.friendsList[username] !== username) {
       this.friendsList[username] = username;
       this.colorFriendPosts();
@@ -19,7 +18,6 @@ var Friends = {
       delete this.friendsList[username];
       this.colorFriendPosts();
     }
-
   },
 
   colorFriendPosts: function() {
@@ -33,5 +31,4 @@ var Friends = {
       }
     }
   }
-
 };

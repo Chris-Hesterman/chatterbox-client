@@ -17,12 +17,5 @@ var RoomsView = {
     console.log(html);
     this.$select.append(html);
     App.refresh();
-  },
-
-  // render: function () {
-  //   MessagesView.renderMessage(Messages.results);
-  // },
-
+  }
 };
-
-

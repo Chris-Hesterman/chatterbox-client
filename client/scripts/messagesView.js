@@ -1,16 +1,13 @@
 var MessagesView = {
-
   $chats: $('#chats'),
 
-  initialize: function () {
+  initialize: function() {
     setTimeout(function() {
       MessagesView.renderMessage(Messages.results);
     }, 2000);
-    // MessagesView.render();
-
   },
 
-  filterMessages: function () {
+  filterMessages: function() {
     var roomMessages = Messages.results.filter((message) => {
       if (message.roomname === App.roomname) {
         return message;
@@ -20,7 +17,7 @@ var MessagesView = {
     return roomMessages;
   },
 
-  renderMessage: function (messages) {
+  renderMessage: function(messages) {
     let html = '';
 
     if (App.roomname !== 'default room') {
@@ -28,13 +25,10 @@ var MessagesView = {
     }
 
     for (let post of messages) {
-      // console.log(Messages);
       html += MessageView.render({ message: post });
-      // console.log(html);
     }
 
     App.stopSpinner();
     $('#chats').append(html);
   }
-
 };
